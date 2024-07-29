@@ -23,9 +23,17 @@ int main()
         Bureaucrat Jim(0, "Jim");
         std::cout << Jim << std::endl;
     }
-    catch (std::exception& e)
+    catch (Bureaucrat::GradeTooHighException& e)
     {
        std::cerr << e.what() << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException& e)
+    {
+       std::cerr << e.what() << std::endl;
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
     }
     catch(...)
     {
@@ -37,6 +45,14 @@ int main()
     {
         Bureaucrat Jim(151, "JimLow");
         std::cout << Jim << std::endl;
+    }
+    catch (Bureaucrat::GradeTooHighException& e)
+    {
+       std::cerr << e.what() << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException& e)
+    {
+       std::cerr << e.what() << std::endl;
     }
     catch (std::exception& e)
     {
@@ -62,6 +78,14 @@ int main()
 
         Ju.incrementGrade();
     }
+    catch (Bureaucrat::GradeTooHighException& e)
+    {
+       std::cerr << e.what() << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException& e)
+    {
+       std::cerr << e.what() << std::endl;
+    }
     catch (std::exception& e)
     {
         std::cerr << e.what() << std::endl;
@@ -84,6 +108,14 @@ int main()
         Plop.decrementGrade();
         std::cout << Plop << std::endl;
         
+    }
+    catch (Bureaucrat::GradeTooHighException& e)
+    {
+       std::cerr << e.what() << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException& e)
+    {
+       std::cerr << e.what() << std::endl;
     }
     catch (std::exception& e)
     {
