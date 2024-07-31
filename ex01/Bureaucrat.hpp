@@ -1,11 +1,24 @@
+#ifndef BUREAUCRAT
+#define BUREAUCRAT
+
 #include <string>
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
+
+#define RED "\033[1;31m"
+#define GREEN "\033[1;32m"
+#define BLUE "\033[1;34m"
+#define YELLOW "\033[1;33m"
+#define RESET "\033[0m"
+
+class Form;
 
 class Bureaucrat
 {
 	int					_grade;
 	const std::string	_name;
+	Form 				*_form;
 
 	public :
 	class GradeTooHighException : public std::exception
@@ -13,7 +26,7 @@ class Bureaucrat
 		public:
 		virtual const char* what() const throw() // Cette ligne déclare une méthode virtuelle `what` qui retourne un message d'erreur sous forme de chaîne de caractères, ne modifie pas l'objet, et ne lance pas d'exception.
 		{
-			return ("Grade is too high.\n");
+			return ("Bureaucrat grade is too high.\n");
 		}
 	};
 
@@ -22,7 +35,7 @@ class Bureaucrat
 		public:
 		virtual const char* what() const throw()
 		{
-			return ("Grade is too low.\n");
+			return ("Bureaucrat grade is too low.\n");
 		}
 	};
 
@@ -39,7 +52,10 @@ class Bureaucrat
 	int				getGrade() const;
 	void			incrementGrade();
 	void			decrementGrade();
+	void 			signForm(Form& form);
 
 };
 
 std::ostream &operator<<(std::ostream& os, Bureaucrat& bureaucrat);
+
+#endif

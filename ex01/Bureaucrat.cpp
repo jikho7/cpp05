@@ -1,5 +1,17 @@
 #include"Bureaucrat.hpp"
 
+void Bureaucrat::signForm(Form& form)
+{
+    if (this->getGrade() <= form.getAbleToSign())
+       std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    else
+    {
+        std::cout << this->getName() << " couldn't sign " << form.getName() << " because "; 
+        throw Form::GradeTooLowException();
+    }
+
+}
+
 Bureaucrat::Bureaucrat(int grade, const std::string name) : _grade(grade), _name(name)
 {
     if (grade < 1)

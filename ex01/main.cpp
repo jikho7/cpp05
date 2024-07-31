@@ -3,16 +3,16 @@
 
 int main()
 {
-    Form test("test", 50, 87);
-    std::cerr << test << std::endl;
-
-    std::cout << "TEST 1 : no exception (42, James)" << std::endl;
+    std::cout << YELLOW << "Test 1 : Jim, grade 1, Form sign(10), execute(5)" << RESET << std::endl;
     try
     {
-        Bureaucrat James(42, "James");
-        std::cout << James << std::endl;
+        Bureaucrat Jim(1, "Jim");
+        Form form1("form1", 10, 5);
+
+        std::cout << form1 << std::endl;
+        Jim.signForm(form1);
     }
-    catch (std::exception& e)
+    catch(const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
     }
@@ -20,22 +20,18 @@ int main()
     {
         std::cout << "default" << std::endl;
     }
+    std::cout << std::endl;
 
-    std::cout << "TEST 2 : too high (0, Jim)" << std::endl;
+    std::cout << YELLOW << "Test 2 : James, grade 100, Form sign(10), execute(5)" << RESET << std::endl;
     try
     {
-        Bureaucrat Jim(0, "Jim");
-        std::cout << Jim << std::endl;
+        Bureaucrat James(100, "James");
+        Form form2("form2", 10, 5);
+
+        std::cout << form2 << std::endl;
+        James.signForm(form2);
     }
-    catch (Bureaucrat::GradeTooHighException& e)
-    {
-       std::cerr << e.what() << std::endl;
-    }
-    catch (Bureaucrat::GradeTooLowException& e)
-    {
-       std::cerr << e.what() << std::endl;
-    }
-    catch (std::exception& e)
+    catch(const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
     }
@@ -43,85 +39,38 @@ int main()
     {
         std::cout << "default" << std::endl;
     }
+    std::cout << std::endl;
 
-    std::cout << "TEST 3 : too low (151, JimLow)" << std::endl;
+    std::cout << YELLOW << "Test 3 : Plop, grade 10, Form sign(10), execute(5)" << RESET << std::endl;
     try
     {
-        Bureaucrat Jim(151, "JimLow");
-        std::cout << Jim << std::endl;
-    }
-    catch (Bureaucrat::GradeTooHighException& e)
-    {
-       std::cerr << e.what() << std::endl;
-    }
-    catch (Bureaucrat::GradeTooLowException& e)
-    {
-       std::cerr << e.what() << std::endl;
-    }
-    catch (std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    catch(...)
-    {
-        std::cout << "default" << std::endl;
-    }
-
-    std::cout << "TEST 4 : Incrementation (2, Ju)" << std::endl;
-    try
-    {
-        Bureaucrat Ju(2, "Ju");
-
-        std::cout << Ju << std::endl;
-
-        Ju.incrementGrade();
-        std::cout << Ju << std::endl;
-
-        Ju.incrementGrade();
-        std::cout << Ju << std::endl;
-
-        Ju.incrementGrade();
-    }
-    catch (Bureaucrat::GradeTooHighException& e)
-    {
-       std::cerr << e.what() << std::endl;
-    }
-    catch (Bureaucrat::GradeTooLowException& e)
-    {
-       std::cerr << e.what() << std::endl;
-    }
-    catch (std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    catch(...)
-    {
-        std::cout << "default" << std::endl;
-    }
-
-    std::cout << "TEST 5 : decrementation (149, Plop)" << std::endl;
-    try
-    {
-        Bureaucrat Plop(149, "Plop");
-
-        std::cout << Plop << std::endl;
-
-        Plop.decrementGrade();
-        std::cout << Plop << std::endl;
-
-        Plop.decrementGrade();
-        std::cout << Plop << std::endl;
+        Bureaucrat Plop(10, "Plop");
+        Form form3("form3", 10, 5);
         
+        std::cout << form3 << std::endl;
+        Plop.signForm(form3);
     }
-    catch (Bureaucrat::GradeTooHighException& e)
+    catch(const std::exception& e)
     {
-       std::cerr << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
-    catch (Bureaucrat::GradeTooLowException& e)
+    catch(...)
     {
-       std::cerr << e.what() << std::endl;
+        std::cout << "default" << std::endl;
     }
-    catch (std::exception& e)
+    std::cout << std::endl;
+
+    
+    std::cout << YELLOW << "Test 4 : Jimm, grade 1000, Form sign(10), execute(5)" << RESET << std::endl;
+    try
+    {
+        Bureaucrat Jimm(1000, "Jimm");
+        Form form4("form4", 10, 5);
+    
+        std::cout << form4 << std::endl;
+        Jimm.signForm(form4);
+    }
+    catch(const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
     }
@@ -130,5 +79,58 @@ int main()
         std::cout << "default" << std::endl;
     }
 
+    std::cout << YELLOW << "Test 5 : Jimmm, grade 1, Form sign(1000), execute(500)" << RESET << std::endl;
+    try
+    {
+        Bureaucrat Jimmm(1, "Jimmm");
+        Form form5("form5", 1000, 500);
+    
+        std::cout << form5 << std::endl;
+        Jimmm.signForm(form5);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cout << "default" << std::endl;
+    }
+
+    std::cout << YELLOW << "Test 6 : Ji, grade 0, Form sign(10), execute(5)" << RESET << std::endl;
+    try
+    {
+        Bureaucrat Ji(0, "Ji");
+        Form form6("form6", 10, 5);
+    
+        std::cout << form6 << std::endl;
+        Ji.signForm(form6);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cout << "default" << std::endl;
+    }
+
+    std::cout << YELLOW << "Test 7 : Jii, grade 1, Form sign(0), execute(500)" << RESET << std::endl;
+    try
+    {
+        Bureaucrat Jii(1, "Jii");
+        Form form7("form7", 0, 500);
+
+        std::cout << form7 << std::endl;
+        Jii.signForm(form7);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cout << "default" << std::endl;
+    }
     return(0);
 }

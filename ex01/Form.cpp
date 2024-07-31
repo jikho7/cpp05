@@ -2,6 +2,11 @@
 
     Form::Form(std::string name, const int gradeToSign, const int gradeToExecute) : _name(name), _signed(1), _ableToSign(gradeToSign), _gradeToExecute(gradeToExecute)
     {
+        if (this->getAbleToSign() > 150)
+            throw GradeTooLowException();
+        if (this->getAbleToSign() < 1)
+            throw GradeTooHighException();
+        
     }
 
     Form::~Form(){}
@@ -39,6 +44,14 @@
     int Form::getGradeToExecute()const
     {
         return this->_gradeToExecute;
+    }
+
+    bool Form::beSigned(Bureaucrat &bureaucrat)
+    {
+        if (bureaucrat.getGrade() <= this->getAbleToSign())
+            return true;
+        else
+            throw GradeTooLowException();
     }
 
     std::ostream& operator<<(std::ostream& os, Form& form)
