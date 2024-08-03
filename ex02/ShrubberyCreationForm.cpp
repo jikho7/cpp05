@@ -15,8 +15,19 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-void ShrubberyCreationForm::doSomething()
+std::string ShrubberyCreationForm::getTarget() const
 {
+    return this->_target;
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+    if (!this->getSigned())
+        throw NotSigned();
+
+    if (executor.getGrade() < this->getGradeToExecute())
+        throw GradeTooLowException();
+
     std::ofstream file(this->getTarget().c_str());
     if (file.is_open())
     {
@@ -32,9 +43,5 @@ void ShrubberyCreationForm::doSomething()
     }
     else
         std::cerr << "Error opening file." << std::endl;
-}
 
-std::string ShrubberyCreationForm::getTarget() const
-{
-    return this->_target;
 }

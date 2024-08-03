@@ -63,7 +63,12 @@
     {
 
     }
-    
+
+    void    AForm::execute(Bureaucrat const & executor) const
+    {
+        (void)executor;
+    }
+
     std::ostream& operator<<(std::ostream& os, AForm& form)
     {
         os << form.getName() << " is ";

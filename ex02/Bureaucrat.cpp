@@ -1,17 +1,5 @@
 #include"Bureaucrat.hpp"
 
-void Bureaucrat::signForm(AForm& form)
-{
-    if (this->getGrade() <= form.getAbleToSign())
-       std::cout << this->getName() << " signed " << form.getName() << std::endl;
-    else
-    {
-        std::cout << this->getName() << " couldn't sign " << form.getName() << " because "; 
-        throw AForm::GradeTooLowException();
-    }
-
-}
-
 Bureaucrat::Bureaucrat(int grade, const std::string name) : _grade(grade), _name(name)
 {
     if (grade < 1)
@@ -63,6 +51,28 @@ void Bureaucrat::decrementGrade()
         throw GradeTooLowException();
 }
 
+void Bureaucrat::signForm(AForm& form)
+{
+    if (this->getGrade() <= form.getAbleToSign())
+       std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    else
+    {
+        std::cout << this->getName() << " couldn't sign " << form.getName() << " because "; 
+        throw AForm::GradeTooLowException();
+    }
+
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{    
+    if (this->getGrade() <= form.getGradeToExecute())
+       std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    else
+    {
+        std::cout << this->getName() << " couldn't execute " << form.getName() << " because "; 
+        throw AForm::GradeTooLowException();
+    }
+}
 std::ostream &operator<<(std::ostream& os, Bureaucrat& bureaucrat)
 {
     os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
