@@ -1,10 +1,13 @@
-NAME = form
+NAME = Aform
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp
+		AForm.cpp \
+		PresidentialPardonForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp
 
 OBJ := $(SRC:%.cpp=%.o)
 

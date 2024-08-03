@@ -1,0 +1,78 @@
+
+#include "AForm.hpp"
+
+    AForm::AForm() : _ableToSign(0), _gradeToExecute(0){
+    }
+
+    AForm::AForm(std::string name, const int gradeToSign, const int gradeToExecute) : _name(name), _signed(1), _ableToSign(gradeToSign), _gradeToExecute(gradeToExecute)
+    {
+        if (this->getAbleToSign() > 150)
+            throw GradeTooLowException();
+        if (this->getAbleToSign() < 1)
+            throw GradeTooHighException();
+        
+    }
+
+    AForm::~AForm(){}
+
+    AForm::AForm(const AForm& other) : _ableToSign(other._ableToSign), _gradeToExecute(other._gradeToExecute)
+    {
+        *this = other;
+    }
+
+    AForm& AForm::operator=(const AForm& other)
+    {
+        if (this != &other)
+        {
+            this->_name = other._name;
+            this->_signed = other._signed;
+
+        }
+        return *this;
+    }
+
+
+    std::string AForm::getName()const{
+        return this->_name;
+    }
+
+    bool AForm::getSigned()const
+    {
+        return this->_signed;
+    }
+
+   int AForm::getAbleToSign()const
+    {
+        return this->_ableToSign;
+    }
+
+    int AForm::getGradeToExecute()const
+    {
+        return this->_gradeToExecute;
+    }
+
+    bool AForm::beSigned(Bureaucrat &bureaucrat)
+    {
+        if (bureaucrat.getGrade() <= this->getAbleToSign())
+            return true;
+        else
+            throw GradeTooLowException();
+    }
+
+    void AForm::doSomething()
+    {
+
+    }
+    
+    std::ostream& operator<<(std::ostream& os, AForm& form)
+    {
+        os << form.getName() << " is ";
+        if (form.getSigned() == 1)
+            os << "not signed.\n";
+        else
+            os << "signed.\n";
+        os << "A grade of " << form.getAbleToSign() << " is needed to sign it.\n" << "A grade of " << form.getGradeToExecute() << " is needed to execute." << std::endl;
+
+        return os;
+    }
+

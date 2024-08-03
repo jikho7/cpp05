@@ -9,8 +9,8 @@ OBJ := $(SRC:%.cpp=%.o)
 
 all : $(NAME)
 
-.c.o:
-	${CC} ${CXXLAGS} -I. -c $< -o ${<:.c=.o}
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -I. -c $< -o $@
 
 $(NAME) : $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
