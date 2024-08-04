@@ -1,3 +1,4 @@
+
 #include "AForm.hpp"
 
 // ##################################################################
@@ -68,7 +69,7 @@ bool AForm::beSigned(Bureaucrat &bureaucrat)
         throw GradeTooLowException();
 }
 
-void AForm::execute(Bureaucrat const & executor) const
+void    AForm::execute(Bureaucrat const & executor) const
 {
     std::cout << executor.getName() << " execute " << std::endl;
 }
@@ -84,7 +85,6 @@ std::ostream& operator<<(std::ostream& os, AForm& form)
         os << "not signed.\n";
     else
         os << "signed.\n";
-    
     os << "A grade of " << form.getAbleToSign() << " is needed to sign it.\n" << "A grade of " << form.getGradeToExecute() << " is needed to execute." << std::endl;
 
     return os;

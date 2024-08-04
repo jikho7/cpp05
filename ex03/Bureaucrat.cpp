@@ -91,11 +91,6 @@ void Bureaucrat::executeForm(AForm const & form)
         throw AForm::GradeTooLowException();
     }
 }
-
-// ##################################################################
-//                            Surcharges                            #
-// ##################################################################
-
 std::ostream &operator<<(std::ostream& os, Bureaucrat& bureaucrat)
 {
     os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;

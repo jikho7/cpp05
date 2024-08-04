@@ -1,16 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
 
-// ##################################################################
-//                    Constructor && Destructor                     #
-// ##################################################################
-
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137){}
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation Form", 145, 137), _target(target){}
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
-
-// ##################################################################
-//		constructeur par copie et operateur d'affectation		   #
-// ##################################################################
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other)
 {
@@ -26,23 +18,10 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-// ##################################################################
-//                           GETTERS                                #
-// ##################################################################
-
 std::string ShrubberyCreationForm::getTarget() const
 {
     return this->_target;
 }
-
-// ##################################################################
-//                           SETTERS                                #
-// ##################################################################
-
-
-// ##################################################################
-//                            Methodes                              #
-// ##################################################################
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
@@ -67,4 +46,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     }
     else
         std::cerr << "Error opening file." << std::endl;
+
 }

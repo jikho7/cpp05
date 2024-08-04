@@ -1,8 +1,16 @@
 #include "PresidentialPardonForm.hpp"
 
+// ##################################################################
+//                    Constructor && Destructor                     #
+// ##################################################################
+
 PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon Form", 25, 5){}
 PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Presidential Pardon Form", 25, 5), _target(target){}
 PresidentialPardonForm::~PresidentialPardonForm(){}
+
+// ##################################################################
+//		constructeur par copie et operateur d'affectation		   #
+// ##################################################################
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other)
 { 
@@ -18,6 +26,24 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
     return *this;
 }
 
+// ##################################################################
+//                           GETTERS                                #
+// ##################################################################
+
+std::string PresidentialPardonForm::getTarget() const
+{
+    return this->_target;
+}
+
+// ##################################################################
+//                           SETTERS                                #
+// ##################################################################
+
+
+// ##################################################################
+//                            Methodes                              #
+// ##################################################################
+
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
     if (!this->getSigned())
@@ -27,7 +53,3 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
     std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
-std::string PresidentialPardonForm::getTarget() const
-{
-    return this->_target;
-}
