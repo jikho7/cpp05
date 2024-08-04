@@ -24,19 +24,15 @@ class Bureaucrat
 	class GradeTooHighException : public std::exception
 	{
 		public:
-		virtual const char* what() const throw() // Cette ligne déclare une méthode virtuelle `what` qui retourne un message d'erreur sous forme de chaîne de caractères, ne modifie pas l'objet, et ne lance pas d'exception.
-		{
-			return ("Bureaucrat grade is too high.\n");
-		}
+		virtual const char* what() const throw(){
+			return ("Bureaucrat grade is too high.\n");}
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 		public:
-		virtual const char* what() const throw()
-		{
-			return ("Bureaucrat grade is too low.\n");
-		}
+		virtual const char* what() const throw(){
+			return ("Bureaucrat grade is too low.\n");}
 	};
 
 	// Constructor and destructor

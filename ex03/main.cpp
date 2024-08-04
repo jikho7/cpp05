@@ -5,120 +5,121 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
     std::srand(std::time(0));
 
+    std::cout << YELLOW << "Test Valid Form" << RESET << std::endl;
     try
     {
-        Bureaucrat Jim(24, "Jim");
-        PresidentialPardonForm Sam("Sam");
+        Intern someRandomIntern;
+        Bureaucrat Dan(1, "Dan");
+        AForm *rrf;
 
-        Jim.signForm(Sam);
-        Jim.executeForm(Sam);
+        rrf = someRandomIntern.makeForm("Presidential Pardon", "Bender");
+        Dan.executeForm(*rrf);
+
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
-
-    try
-    {
-        Bureaucrat Jimm(28, "Jimm");
-        PresidentialPardonForm Samm("Samm");
-
-        Jimm.signForm(Samm);
-        Jimm.executeForm(Samm);
+    catch (Intern::InvalidName &e) {
+        std::cerr << "InvalidName exception: " << e.what() << std::endl;
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
+    catch (const std::exception &e) {
+        std::cerr << "std::exception: " << e.what() << std::endl;
+    }
 
     try
     {
-        Bureaucrat Jimmm(1, "Jimmm");
-        PresidentialPardonForm Sammm("Sammm");
+        Intern someRandomIntern;
+        Bureaucrat Dan(1, "Dan");
+        AForm *rrf;
 
-        Jimmm.signForm(Sammm);
-        Jimmm.executeForm(Sammm);
+        rrf = someRandomIntern.makeForm("Robotomy Request", "Bender");
+
+       Dan.executeForm(*rrf);
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
-
-        try
-    {
-        Bureaucrat Jimmm0(0, "Jimmm0");
-        PresidentialPardonForm Sammm("Sammm");
-
-        Jimmm0.signForm(Sammm);
-        Jimmm0.executeForm(Sammm);
+    catch (Intern::InvalidName &e) {
+        std::cerr << "InvalidName exception: " << e.what() << std::endl;
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
+    catch (const std::exception &e) {
+        std::cerr << "std::exception: " << e.what() << std::endl;
+    }
 
     try
     {
-        Bureaucrat Zac(73, "Zac");
-        RobotomyRequestForm Do("Do");
+        Intern someRandomIntern;
+        Bureaucrat Dan(1, "Dan");
+        AForm *rrf;
 
-        Zac.signForm(Do);
-        Zac.executeForm(Do);
+        rrf = someRandomIntern.makeForm("Shrubbery Creation", "Bender");
+
+       Dan.executeForm(*rrf);
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
+    catch (Intern::InvalidName &e) {
+        std::cerr << "InvalidName exception: " << e.what() << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cerr << "std::exception: " << e.what() << std::endl;
+    }
+
+    std::cout << YELLOW << "Test Invalid Form" << RESET << std::endl;
+    try
+    {
+        Intern someRandomIntern;
+        Bureaucrat Dan(1, "Dan");
+
+        AForm *rrf;
+
+        rrf = someRandomIntern.makeForm("Rhjkhkhjorm", "Bender");
+
+        Dan.executeForm(*rrf);
+    }
+    catch (Intern::InvalidName &e) {
+        std::cerr << "InvalidName exception: " << e.what() << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cerr << "std::exception: " << e.what() << std::endl;
+    }
 
     try
     {
-        Bureaucrat Zacc(46, "Zacc");
-        RobotomyRequestForm Doo("Doo");
+        Intern someRandomIntern;
+        Bureaucrat Dan(1, "Dan");
 
-        Zacc.signForm(Doo);
-        Zacc.executeForm(Doo);
+        AForm *rrf;
+
+        rrf = someRandomIntern.makeForm("", "Bender");
+
+        Dan.executeForm(*rrf);
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
+    catch (Intern::InvalidName &e) {
+        std::cerr << "InvalidName exception: " << e.what() << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cerr << "std::exception: " << e.what() << std::endl;
+    }
 
+
+    std::cout << YELLOW << "Test Invalid target" << RESET << std::endl;
     try
     {
-        Bureaucrat Zaccc(1, "Zaccc");
-        RobotomyRequestForm Dooo("Dooo");
+        Intern someRandomIntern;
+        AForm *rrf;
 
-        Zaccc.signForm(Dooo);
-        Zaccc.executeForm(Dooo);
+        rrf = someRandomIntern.makeForm("Presidential Pardon", "");
+
+        if(rrf){}
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
-    
-    try
-    {
-        Bureaucrat Lo(146, "Lo");
-        ShrubberyCreationForm Tree("Tree");
-
-        Lo.signForm(Tree);
-        Lo.executeForm(Tree);
+    catch (Intern::InvalidName &e) {
+        std::cerr << "InvalidName exception: " << e.what() << std::endl;
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
-
-    try
-    {
-        Bureaucrat Loo(138, "Loo");
-        ShrubberyCreationForm Treee("Treee");
-
-        Loo.signForm(Treee);
-        Loo.executeForm(Treee);
+    catch (AForm::InvalidTarget &e) {
+        std::cerr << "InvalidName exception: " << e.what() << std::endl;
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
-
-    try
-    {
-        Bureaucrat Looo(1, "Looo");
-        ShrubberyCreationForm Treeee("Treeee");
-
-        Looo.signForm(Treeee);
-        Looo.executeForm(Treeee);
+    catch (const std::exception &e) {
+        std::cerr << "std::exception: " << e.what() << std::endl;
     }
-    catch (std::exception &e){
-        std::cerr << e.what() << std::endl;}
 
     return (0);
 }

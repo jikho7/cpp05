@@ -2,11 +2,17 @@
 #include <cstdlib>
 #include <ctime>
 
+// ##################################################################
+//                    Constructor && Destructor                     #
+// ##################################################################
+
 RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotmy Request Form", 72, 45){}
-
 RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotmy Request Form", 72, 45), _target(target) {}
-
 RobotomyRequestForm::~RobotomyRequestForm(){}
+
+// ##################################################################
+//		constructeur par copie et operateur d'affectation		   #
+// ##################################################################
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other)
 {
@@ -22,20 +28,34 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
     return *this;
 }
 
+// ##################################################################
+//                           GETTERS                                #
+// ##################################################################
+
+std::string RobotomyRequestForm::getTarget() const
+{
+    return this->_target;
+}
+
+// ##################################################################
+//                           SETTERS                                #
+// ##################################################################
+
+
+// ##################################################################
+//                            Methodes                              #
+// ##################################################################
+
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
     if (!this->getSigned())
         throw NotSigned();
     if (executor.getGrade() > this->getGradeToExecute())
         throw GradeTooLowException();
-    std::cout << "\n...drilling noises...\n" << std::endl; //Makes some drilling noises.
+    std::cout << "\n...drilling noises...\n" << std::endl;
     if (std::rand() % 2 == 1)
-        std::cout << executor.getName() << " has been robotomized. \n" << std::endl; //Then, informs that <target> has been robotomized
+        std::cout << executor.getName() << " has been robotomized. \n" << std::endl;
     else
         std::cout << executor.getName() << " has not been robotomized.\n" << std::endl;
 }
 
-std::string RobotomyRequestForm::getTarget() const
-{
-    return this->_target;
-}
