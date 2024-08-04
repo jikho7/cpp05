@@ -2,9 +2,9 @@
 #include <cstdlib>
 #include <ctime>
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotmy Request Form(RRF)", 45, 72){}
+RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotmy Request Form", 72, 45){}
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotmy Request Form(RRF)", 45, 72), _target(target) {}
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotmy Request Form", 72, 45), _target(target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
@@ -15,7 +15,10 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AFo
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
-    (void)other;
+    if (this != &other)
+    {
+        this->_target = other._target;
+    }
     return *this;
 }
 
@@ -23,14 +26,13 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
     if (!this->getSigned())
         throw NotSigned();
-    if (executor.getGrade() < this->getGradeToExecute())
+    if (executor.getGrade() > this->getGradeToExecute())
         throw GradeTooLowException();
-    std::cout << "...drilling noises...\n" << std::endl; //Makes some drilling noises.
-    if (std::rand() %2 == 0)
-        std::cout << executor.getName() << " has been robotomized." << std::endl; //Then, informs that <target> has been robotomized
+    std::cout << "\n...drilling noises...\n" << std::endl; //Makes some drilling noises.
+    if (std::rand() % 2 == 1)
+        std::cout << executor.getName() << " has been robotomized. \n" << std::endl; //Then, informs that <target> has been robotomized
     else
-    std::cout << " has not been robotomized :(" << std::endl;
-    //successfully 50% of the time. Otherwise, 
+        std::cout << executor.getName() << " has not been robotomized.\n" << std::endl;
 }
 
 std::string RobotomyRequestForm::getTarget() const

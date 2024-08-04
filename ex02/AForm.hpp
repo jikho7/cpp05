@@ -29,7 +29,7 @@ class AForm
 
         virtual const char* what() const throw()
         {
-            return ("Form grade is too high.\n");
+            return ("Grade is too high. (Form)\n");
         }
     };
 
@@ -39,7 +39,7 @@ class AForm
 
         virtual const char* what() const throw()
         {
-            return ("From grade is too low.\n");
+            return ("Grade is too low. (Form)\n");
         }
     };
 
@@ -56,7 +56,6 @@ class AForm
     bool            getSigned()const;
     int             getAbleToSign()const;
     int             getGradeToExecute()const;
-    virtual void    doSomething();
     virtual void    execute(Bureaucrat const & executor) const;
 };
 

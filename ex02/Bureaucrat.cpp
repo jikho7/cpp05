@@ -1,5 +1,9 @@
 #include"Bureaucrat.hpp"
 
+// ##################################################################
+//                    Constructor && Destructor                     #
+// ##################################################################
+
 Bureaucrat::Bureaucrat(int grade, const std::string name) : _grade(grade), _name(name)
 {
     if (grade < 1)
@@ -7,6 +11,12 @@ Bureaucrat::Bureaucrat(int grade, const std::string name) : _grade(grade), _name
     if (grade > 150)
         throw GradeTooLowException();
 }
+
+Bureaucrat::~Bureaucrat(){}
+
+// ##################################################################
+//		constructeur par copie et operateur d'affectation		   #
+// ##################################################################
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _grade(other._grade), _name(other._name)
 {
@@ -23,22 +33,28 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other)
     return (*this);
 }
 
-Bureaucrat::~Bureaucrat(){}
+// ##################################################################
+//                           GETTERS                                #
+// ##################################################################
 
-std::string	Bureaucrat::getName() const
-{
-    return (this->_name);
-}
+std::string	Bureaucrat::getName() const{
+    return (this->_name);}
 
-int	Bureaucrat::getGrade() const
-{
-    return (this->_grade);
-}
+int	Bureaucrat::getGrade() const{
+    return (this->_grade);}
+
+// ##################################################################
+//                           SETTERS                                #
+// ##################################################################
+
+
+// ##################################################################
+//                            Methodes                              #
+// ##################################################################
 
 void Bureaucrat::incrementGrade()
 {
     this->_grade--;
-
     if (this->_grade < 1)
         throw GradeTooHighException();
 }
@@ -46,7 +62,6 @@ void Bureaucrat::incrementGrade()
 void Bureaucrat::decrementGrade()
 {
     this->_grade++;
-
     if (this->_grade > 150)
         throw GradeTooLowException();
 }
@@ -60,16 +75,19 @@ void Bureaucrat::signForm(AForm& form)
         std::cout << this->getName() << " couldn't sign " << form.getName() << " because "; 
         throw AForm::GradeTooLowException();
     }
-
 }
 
 void Bureaucrat::executeForm(AForm const & form)
-{    
+{   
+
     if (this->getGrade() <= form.getGradeToExecute())
-       std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    {
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+        form.execute(*this);
+    }
     else
     {
-        std::cout << this->getName() << " couldn't execute " << form.getName() << " because "; 
+        std::cout << this->getName() << " couldn't execute " << form.getName() << " because " ; 
         throw AForm::GradeTooLowException();
     }
 }
