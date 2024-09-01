@@ -15,7 +15,7 @@ class AForm
     bool                _signed;
     const int           _gradeToSign;
     const int           _gradeToExecute;
-    
+
     protected:
     void    validityVerification(Bureaucrat const &executor) const;
 
@@ -54,7 +54,7 @@ class AForm
     class InvalidTarget : public std::exception
     {
         public :
-        virtual const char* what() throw(){
+        virtual const char* what() const throw(){
             return ("Invalid target.\n");}
     };
     // Methodes

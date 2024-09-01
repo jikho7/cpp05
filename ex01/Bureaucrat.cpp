@@ -14,7 +14,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : _grade(other._grade), _name(ot
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other)
-{   
+{
     if (this != &other)
     {
         this->_grade = other._grade;
@@ -54,11 +54,14 @@ void Bureaucrat::decrementGrade()
 void Bureaucrat::signForm(Form& form)
 {
     if (this->getGrade() <= form.getAbleToSign())
-       std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    {
+        form.beSigned(*this);
+        std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    }
     else
     {
         std::cout << this->getName() << " couldn't sign " << form.getName() << " because ";
-        if (form.getAbleToSign() > this->getGrade()) 
+        if (form.getAbleToSign() > this->getGrade())
             throw Form::GradeTooLowException();
         else
             throw Form::GradeTooHighException();

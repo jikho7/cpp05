@@ -10,7 +10,10 @@ int main()
         Form        form1("form1", 10, 5);
 
         std::cout << form1 << std::endl;
+        std::cout << "Is signed : "  << form1.getSigned() << std::endl;
         Jim.signForm(form1);
+        std::cout << "Is signed : "  << form1.getSigned() << std::endl;
+
     }
     catch(const std::exception& e)
     {
@@ -46,7 +49,7 @@ int main()
     {
         Bureaucrat  Plop(10, "Plop");
         Form        form3("form3", 10, 5);
-        
+
         std::cout << form3 << std::endl;
         Plop.signForm(form3);
     }
@@ -60,13 +63,13 @@ int main()
     }
     std::cout << std::endl;
 
-    
+
     std::cout << YELLOW << "Test 4 : Jimm, grade 1000, Form sign(10), execute(5)" << RESET << std::endl;
     try
     {
         Bureaucrat  Jimm(1000, "Jimm");
         Form        form4("form4", 10, 5);
-    
+
         std::cout << form4 << std::endl;
         Jimm.signForm(form4);
     }
@@ -84,7 +87,7 @@ int main()
     {
         Bureaucrat  Jimmm(1, "Jimmm");
         Form        form5("form5", 1000, 500);
-    
+
         std::cout << form5 << std::endl;
         Jimmm.signForm(form5);
     }
@@ -102,7 +105,7 @@ int main()
     {
         Bureaucrat  Ji(0, "Ji");
         Form        form6("form6", 10, 5);
-    
+
         std::cout << form6 << std::endl;
         Ji.signForm(form6);
     }
