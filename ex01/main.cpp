@@ -144,11 +144,34 @@ int main()
 
         std::cout << form7 << std::endl;
         std::cout << Jii << std::endl;
-        //Jii.signForm(form7);
         Jii.incrementGrade();
         std::cout << Jii << std::endl;
 
+        std::cout << "Is signed : "  << form7.getSigned() << std::endl;
         Jii.signForm(form7);
+        std::cout << "Is signed : "  << form7.getSigned() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cout << "default" << std::endl;
+    }
+
+    std::cout << YELLOW << "Test 9 : Jii, grade 1, Form sign(10), execute(21)" << RESET << std::endl;
+    try
+    {
+        Bureaucrat  Jii(1, "Jii");
+        Form        form7("form7", 10, 21);
+
+        std::cout << form7 << std::endl;
+        std::cout << Jii << std::endl;
+
+        std::cout << "Is signed : "  << form7.getSigned() << std::endl;
+        Jii.signForm(form7);
+        std::cout << "Is signed : "  << form7.getSigned() << std::endl;
     }
     catch(const std::exception& e)
     {

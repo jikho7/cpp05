@@ -18,7 +18,6 @@ class Bureaucrat
 {
 		int					_grade;
 		const std::string	_name;
-		Form 				*_form;
 
 	public :
 		class GradeTooHighException : public std::exception

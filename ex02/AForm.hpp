@@ -55,7 +55,7 @@ class AForm
         bool            getSigned()const;
         int             getAbleToSign()const;
         int             getGradeToExecute()const;
-        virtual void    execute(Bureaucrat const & executor) const;
+        virtual void    execute(Bureaucrat const & executor) const = 0;
         bool            beSigned(Bureaucrat& bureaucrat);
 };
 
